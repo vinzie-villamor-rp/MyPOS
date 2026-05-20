@@ -1,0 +1,17 @@
+package com.rocketpartners.pos.event;
+
+public enum PosEvent {
+    ITEM_SCANNED,
+    ITEM_ADDED,
+    ITEM_VOIDED,
+    BASKET_VOIDED,
+    BASKET_TOTALLED,
+    TENDER_CASH,
+    NEXT_DOLLAR,
+    TENDER_DEBIT,
+    TENDER_CREDIT,
+    TENDER_CHECK,
+    TENDER_MOBILE_PAYMENT,
+    TENDER_GIFT_CARD,
+    TRANSACTION_COMPLETE
+}
