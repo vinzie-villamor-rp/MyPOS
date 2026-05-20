@@ -1,0 +1,47 @@
+// Root build — manages shared config for all subprojects.
+// "One build.gradle to rule them all" (Rocket Partners monorepo convention).
+
+plugins {
+    id 'java'
+}
+
+
+allprojects {
+    group   = 'com.rocketpartners'
+    version = '0.1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+            vendor          = JvmVendorSpec.AZUL
+        }
+    }
+
+    dependencies {
+        // JUnit 5 for all modules
+        testImplementation   'org.junit.jupiter:junit-jupiter-api:5.11.4'
+        testImplementation   'org.junit.jupiter:junit-jupiter-params:5.11.4'
+        testRuntimeOnly      'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+        testRuntimeOnly      'org.junit.platform:junit-platform-launcher:1.11.4'
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events 'passed', 'skipped', 'failed'
+        }
+    }
+
+    // Ensure consistent encoding
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+}

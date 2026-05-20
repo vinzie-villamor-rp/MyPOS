@@ -1,0 +1,21 @@
+// Phase 1 + 2: Java Swing POS desktop client with Virtual Journal socket integration.
+
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.rocketpartners.pos.PosApplication'
+}
+
+dependencies {
+    // Mockito for unit testing Swing-decoupled service layer
+    testImplementation 'org.mockito:mockito-core:5.14.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+}

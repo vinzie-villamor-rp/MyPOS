@@ -1,0 +1,15 @@
+// Phase 2: Standalone Virtual Journal TCP socket server.
+
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.rocketpartners.journal.JournalServerApplication'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+}
