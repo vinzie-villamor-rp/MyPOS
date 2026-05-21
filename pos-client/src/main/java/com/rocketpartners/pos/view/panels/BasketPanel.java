@@ -127,4 +127,9 @@ public class BasketPanel extends JPanel {
         voidBasketButton.setEnabled(false);
         quickAddButtons.values().forEach(btn -> btn.setEnabled(false));
     }
+
+    public void reset() {
+        refresh(List.of());
+        quickAddButtons.values().forEach(btn -> btn.setEnabled(true));
+    }
 }

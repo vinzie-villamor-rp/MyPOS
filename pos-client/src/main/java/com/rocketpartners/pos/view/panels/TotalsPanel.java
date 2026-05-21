@@ -44,4 +44,9 @@ public class TotalsPanel extends JPanel {
     public void lock() {
         totalButton.setEnabled(false);
     }
+
+    public void reset() {
+        refresh(new com.rocketpartners.pos.view.model.TotalsRow("$0.00", "$0.00", "$0.00"));
+        totalButton.setEnabled(false);
+    }
 }

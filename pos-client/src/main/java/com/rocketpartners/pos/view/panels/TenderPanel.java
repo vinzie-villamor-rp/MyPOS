@@ -102,4 +102,11 @@ public class TenderPanel extends JPanel {
         setAllEnabled(false);
         cashInputField.setEnabled(false);
     }
+
+    public void reset() {
+        setAllEnabled(false);
+        cashInputField.setText("");
+        cashInputField.setEnabled(true);
+        setCashInputVisible(false);
+    }
 }

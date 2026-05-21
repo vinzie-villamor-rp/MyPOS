@@ -35,6 +35,8 @@ public class TenderController implements PosEventListener {
     public void onPosEvent(PosEvent event, Object payload) {
         if (event == PosEvent.BASKET_TOTALLED) {
             view.setAllEnabled(true);
+        } else if (event == PosEvent.TRANSACTION_RESET) {
+            view.reset();
         }
     }
 

@@ -30,6 +30,8 @@ public class TotalsController implements PosEventListener {
     public void onPosEvent(PosEvent event, Object payload) {
         if (event == PosEvent.ITEM_ADDED || event == PosEvent.ITEM_VOIDED || event == PosEvent.BASKET_VOIDED) {
             syncButtonState();
+        } else if (event == PosEvent.TRANSACTION_RESET) {
+            view.reset();
         }
     }
 

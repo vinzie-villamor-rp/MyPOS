@@ -36,13 +36,14 @@ public class PosApplication {
         TenderController tenderController = new TenderController(
                 dispatcher, tenderPanel);
 
-        // 5. Register listeners
+        // 5. Register listeners — ReceiptDialog registered after frame is created (needs owner)
         dispatcher.addListener(basketController);
         dispatcher.addListener(totalsController);
         dispatcher.addListener(tenderController);
 
         SwingUtilities.invokeLater(() -> {
-            new PosMainFrame(basketController, totalsController, tenderController);
+            PosMainFrame frame = new PosMainFrame(basketController, totalsController, tenderController, dispatcher);
+            dispatcher.addListener(frame.getReceiptDialog());
             Runtime.getRuntime().addShutdownHook(new Thread(DatabaseConfig::shutdown));
         });
     }
