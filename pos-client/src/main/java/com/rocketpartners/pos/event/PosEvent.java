@@ -3,6 +3,7 @@ package com.rocketpartners.pos.event;
 public enum PosEvent {
     ITEM_SCANNED,
     ITEM_ADDED,
+    ITEM_NOT_FOUND,
     ITEM_VOIDED,
     BASKET_VOIDED,
     BASKET_TOTALLED,

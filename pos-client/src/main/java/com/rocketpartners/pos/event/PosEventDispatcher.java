@@ -1,13 +1,15 @@
 package com.rocketpartners.pos.event;
 
-import lombok.RequiredArgsConstructor;
-
+import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
 public class PosEventDispatcher {
 
-    private final List<PosEventListener> listeners;
+    private final List<PosEventListener> listeners = new ArrayList<>();
+
+    public void addListener(PosEventListener listener) {
+        listeners.add(listener);
+    }
 
     public void dispatch(PosEvent event, Object payload) {
         for (PosEventListener listener : listeners) {
