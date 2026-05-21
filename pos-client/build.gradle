@@ -15,6 +15,10 @@ dependencies {
     testCompileOnly     'org.projectlombok:lombok:1.18.36'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 
+    // Hibernate ORM (standalone JPA) + H2 in-memory database
+    implementation 'org.hibernate.orm:hibernate-core:6.6.15.Final'
+    runtimeOnly    'com.h2database:h2:2.3.232'
+
     testImplementation 'org.mockito:mockito-core:5.14.2'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
 }
