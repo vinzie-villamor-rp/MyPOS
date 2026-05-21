@@ -2,11 +2,13 @@ package com.rocketpartners.pos;
 
 import com.rocketpartners.pos.config.DatabaseConfig;
 import com.rocketpartners.pos.controller.BasketController;
+import com.rocketpartners.pos.controller.TenderController;
 import com.rocketpartners.pos.controller.TotalsController;
 import com.rocketpartners.pos.event.PosEventDispatcher;
 import com.rocketpartners.pos.pricebook.H2PricebookRepository;
 import com.rocketpartners.pos.view.PosMainFrame;
 import com.rocketpartners.pos.view.panels.BasketPanel;
+import com.rocketpartners.pos.view.panels.TenderPanel;
 import com.rocketpartners.pos.view.panels.TotalsPanel;
 
 import javax.swing.*;
@@ -24,19 +26,23 @@ public class PosApplication {
         // 3. Views
         BasketPanel basketPanel = new BasketPanel();
         TotalsPanel totalsPanel = new TotalsPanel();
+        TenderPanel tenderPanel = new TenderPanel();
 
         // 4. Controllers
         BasketController basketController = new BasketController(
                 pricebookRepository, dispatcher, basketPanel);
         TotalsController totalsController = new TotalsController(
                 dispatcher, totalsPanel);
+        TenderController tenderController = new TenderController(
+                dispatcher, tenderPanel);
 
         // 5. Register listeners
         dispatcher.addListener(basketController);
         dispatcher.addListener(totalsController);
+        dispatcher.addListener(tenderController);
 
         SwingUtilities.invokeLater(() -> {
-            new PosMainFrame(basketController, totalsController);
+            new PosMainFrame(basketController, totalsController, tenderController);
             Runtime.getRuntime().addShutdownHook(new Thread(DatabaseConfig::shutdown));
         });
     }
